@@ -5,7 +5,7 @@ import { login, register, loginRequired } from '../controllers/userController.js
 const routes = (app) => {
     //todo routes
     app.route('/todos')
-        .get(getTodos)
+        .get(loginRequired, getTodos)
         .post(loginRequired, createTodo);
 
     app.route('/todo/:id')

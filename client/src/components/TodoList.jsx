@@ -13,15 +13,16 @@ function TodoList() {
     const [tempTodo, setTempTodo] = useState('')
     const disaptch = useDispatch();
     const todos = useSelector((state)=>state.todos.todos)
+   const user = useSelector((state)=>state.user.user);
     console.log(todos);
 
     useEffect(() => {
-        getTodosData(disaptch);
+        getTodosData(disaptch,user);
     }, [])
 
     const handleDelete = async (id) => {
         console.log('delete data');
-        deleteTodo(id,disaptch)
+        deleteTodo(id,disaptch,user)
     //     await axios.delete(`${apiDomain}/todo/${id}`,
     //         { headers: { "Authorization": `${user.token}` } }
     //     ).then((res) => {
@@ -32,10 +33,10 @@ function TodoList() {
     //     getTodos();
     }
 
-    // const handleToggle = (data) => {
-    //     setTempTodo(data)
-    //     setShowEditForm(!showEditForm)
-    // }
+    const handleToggle = (data) => {
+        setTempTodo(data)
+        setShowEditForm(!showEditForm)
+    }
 
 
 
@@ -56,7 +57,6 @@ function TodoList() {
                 )
             })
             }
-            <p>Check todos</p>
         </div>
     )
 }

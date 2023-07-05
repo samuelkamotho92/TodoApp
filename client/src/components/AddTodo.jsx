@@ -6,9 +6,11 @@ import './addtodo.css';
 import { apiDomain } from "../utils/utils";
 import { useContext } from "react";
 import { Context } from "../context/userContext/Context";
-
+import { addTodo } from "../redux/apiCall";
+import { useDispatch,useSelector } from "react-redux";
 export default function AddTodo() {
-    const { user } = useContext(Context)
+    const user = useSelector((state)=>state.user.user);
+    const dispatch = useDispatch();
     const schema = yup.object().shape({
         description: yup.string().required("description is required"),
     });
@@ -17,15 +19,16 @@ export default function AddTodo() {
         resolver: yupResolver(schema),
     });
     const onSubmit = (data) => {
-        Axios.post(`${apiDomain}/todos`, data,
-            { headers: { "Authorization": `${user.token}` } })
-            .then((response) => {
-                response.data.message && alert(response.data.message)
-                reset();
-            })
-            .catch(({ response }) => {
-                alert(response.data.error)
-            });
+        addTodo(dispatch,data,user)
+        // Axios.post(`${apiDomain}/todos`, data,
+        //     { headers: { "Authorization": `${user.token}` } })
+        //     .then((response) => {
+        //         response.data.message && alert(response.data.message)
+        //         reset();
+        //     })
+        //     .catch(({ response }) => {
+        //         alert(response.data.error)
+        //     });
     };
     return (
         <div className="formWrapper">
