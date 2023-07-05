@@ -1,0 +1,30 @@
+.formWrapper {
+    width: 100%;
+    padding-top: 10px;
+
+}
+.Form > input {
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #e9bfbf;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    outline: none;
+}
+.Form > textarea {
+    min-height: 5rem;
+    height: 15rem;
+    border-radius: 5px;
+    border: 1px solid #e9bfbf;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    outline: none;
+    width: 80%;
+    resize: none;
+}

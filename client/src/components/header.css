@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    padding-inline: 5px;
+    padding-top: 3px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: #d2cbcb;
+}
+.header-Wrapper {
+    display: flex;     
+    justify-content:space-around;
+}
+.header-Wrapper > a {
+    text-decoration: none;
+    gap: "5px";
+    display: flex;
+    padding: 8px;
+    
+}
+#icons {
+   margin-right: 4px;
+}

@@ -1,0 +1,44 @@
+.userAvator {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.user-Details {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    border-left: 1px dotted lightgoldenrodyellow;
+    padding-left: 20px;
+    
+}
+
+.userAvator-img {
+    width: 50%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;    
+}
+.userAvator-img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+.profile {
+    display: flex;
+   justify-content: center;
+    align-items: center;
+}
+
+.user-Details > p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: lightgoldenrodyellow;
+    padding-left: 20px;
+}
+.user-Details > p:hover {
+    color: rgb(85, 68, 26);
+}

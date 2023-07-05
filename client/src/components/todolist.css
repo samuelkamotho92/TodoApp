@@ -1,0 +1,21 @@
+.delIcon {
+color: red;
+}
+.delIcon:hover {
+color: rgb(231, 105, 105);
+cursor: pointer;
+}
+.card {
+    min-width: 180px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-inline: 10px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.todo_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}

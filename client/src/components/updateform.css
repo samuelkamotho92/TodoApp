@@ -1,0 +1,58 @@
+ /* create a modal form */
+ .updateForm {
+    /* display: none; */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(26, 26, 26, 0.062);
+}
+.form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+     width: 45%;
+    height: 35%; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 20px;
+    align-items: center;
+    border-radius: 10px;
+    z-index: 10;
+}
+.form > textarea {
+    width: 100%;
+    height: 60%;
+    resize: none;
+}
+.form > textarea:focus {
+    outline: none;
+}
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.btn-wrapper > button {
+   padding: 14% 55%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: rgb(228, 63, 63);
+    color: white;
+    font-size: medium;
+}
+.btn-wrapper > button[type="submit"] {
+    background-color: #4CAF50;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

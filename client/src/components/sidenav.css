@@ -1,0 +1,37 @@
+.sidenav {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    border-right: 1px solid #ccc;
+}
+.sidenav_wrapper {
+    padding: 0.5rem 0.5rem;
+    border-bottom: 1px solid #ccc;
+}
+.sidenav_title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: rgb(68, 91, 56);
+}
+ .icon {  
+    color: rgb(86, 193, 4);
+}
+.sidenav_wrapper:hover {
+    background-color: rgb(123, 153, 100);
+    color: white;
+}
+.sidenav_item {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0.5rem 0.5rem;
+    gap: 0.5rem;
+    color: rgb(68, 91, 56);    
+}
+.sidenav_item:hover, .sidenav_title:hover {
+    background-color: rgb(123, 153, 100);
+    color: white;
+    cursor: pointer;
+}

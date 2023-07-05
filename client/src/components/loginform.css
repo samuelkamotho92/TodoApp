@@ -1,0 +1,41 @@
+.Form {   
+   display: flex;
+   flex-direction: column;
+   align-items: center;  
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+   width: 50%;
+   margin-inline: auto;
+   padding-block: 20px;
+   background-color: whitesmoke;
+   border-radius: 10px;
+   
+}
+.Form > .loginBanner {
+    color: rgb(48, 172, 18);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.Form > p {
+    color: red;
+}
+.submitBtn {
+    width: 25%;
+    color: rgb(48, 172, 18);
+    border-radius: 2px;
+    border: 1px solid rgb(48, 172, 18);
+
+}
+.submitBtn:hover {
+    background-color: rgb(48, 172, 18);
+    color: white;
+}
+
+form input:not([type="submit"])  {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    width: 25%;
+    margin: 5px;
+    padding: 5px;
+}

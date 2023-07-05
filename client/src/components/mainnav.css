@@ -1,0 +1,17 @@
+.mainnav {
+    width: 85%;
+    height: 85vh;
+    overflow-y: scroll;
+}
+.sidenav_title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.mainnav_wrapper > h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    color: rgb(85, 68, 26);    
+}
