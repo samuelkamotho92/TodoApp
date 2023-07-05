@@ -45,12 +45,12 @@ function TodoList() {
             {todos && todos.map((todo, index) => {
                 return (
 
-                    <div className="card" key={todo.id}>
-                        <p>{todo.description}</p>
-                        <AiFillDelete className='delIcon' onClick={() => handleDelete(todo.id)} />
+                    <div className="card" key={todo?.id}>
+                        <p>{todo?.description}</p>
+                        <AiFillDelete className='delIcon' onClick={() => handleDelete(todo?.id)} />
                         <AiFillEdit className='delIcon' onClick={() => handleToggle(todo)} />
                         {
-                            showEditForm && <UpdateForm setShowEditForm={setShowEditForm} todo={tempTodo} getTodos={getTodos} />
+                            showEditForm && <UpdateForm setShowEditForm={setShowEditForm} todo={tempTodo} getTodosData={getTodosData} />
                         }
                     </div>
 

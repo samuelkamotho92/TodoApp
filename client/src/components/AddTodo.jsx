@@ -19,7 +19,7 @@ export default function AddTodo() {
         resolver: yupResolver(schema),
     });
     const onSubmit = (data) => {
-        addTodo(dispatch,data,user)
+        addTodo(dispatch,data)
         // Axios.post(`${apiDomain}/todos`, data,
         //     { headers: { "Authorization": `${user.token}` } })
         //     .then((response) => {

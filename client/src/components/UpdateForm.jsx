@@ -4,28 +4,31 @@ import { apiDomain } from '../utils/utils'
 import axios from 'axios'
 import { Context } from '../context/userContext/Context'
 import './updateform.css'
-
-
+import { updateTodo } from '../redux/apiCall'
+import { useSelector,useDispatch } from 'react-redux'
 const UpdateForm = ({ setShowEditForm, todo, getTodos }) => {
+    const disaptch = useDispatch();
     const [description, setDescription] = useState('')
-
+    const user = useSelector((state)=>state.user.user);
     useEffect(() => {
-        setDescription(todo.description)
+        console.log(todo.id);
+        setDescription(todo.description);
     }, [])
 
 
-    const { user } = useContext(Context)
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await axios.put(`${apiDomain}/todo/${todo.id}`, { description: description },
-            { headers: { "Authorization": `${user.token}` } }
-        ).then((res) => {
-            getTodos()
-            alert(res.data.message)
+        updateTodo({ description: description },todo.id,disaptch)
+        // await axios.put(`${apiDomain}/todo/${todo.id}`, { description: description },
+        //     { headers: { "Authorization": `${user.token}` } }
+        // ).then((res) => {
+        //     getTodos()
+        //     alert(res.data.message)
 
-        }).catch(({ response }) => {
-            alert(response.response.data.error)
-        })
+        // }).catch(({ response }) => {
+        //     alert(response.response.data.error)
+        // })
     }
     return (
         <div className='updateForm'>

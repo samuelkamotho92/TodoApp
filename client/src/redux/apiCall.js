@@ -1,5 +1,5 @@
 import {loginStart,loginSuccess,loginFailure,logOut} from './userSlice';
-import {todoStart,todoSuccess,todoFailure, deleteTodoStart, deleteTodoSuccess, deleteTodoFailure} from './todoSlice';
+import {todoStart,todoSuccess,todoFailure, deleteTodoStart, deleteTodoSuccess, deleteTodoFailure, updateTodoStart, updateTodoSuccess, updateTodoFailure} from './todoSlice';
 import { createTodoStart, createTodoSuccess,createTodoFailure } from './todoSlice';
 import axios from 'axios';
 import { apiDomain } from '../utils/utils';
@@ -50,17 +50,32 @@ export const deleteTodo = async (id,dispatch,user)=>{
     }
   }
 
-  export const addTodo = async(dispatch,data,user) =>{
+  export const addTodo = async(dispatch,data) =>{
     dispatch(createTodoStart())
     try {
-        console.log(data,user.token)
-      await axios.post(`${apiDomain}/todos`,data,
-        { headers: { "authorization": `${user.token}` } }
-        ) 
+      await axios.post(`${apiDomain}/todos`,data) 
         dispatch(createTodoSuccess(data));
     }
     catch(err){
         console.log(err);
         dispatch(createTodoFailure())
     }
+  }
+
+  export const updateTodo = async(todo,id,dispatch)=>{
+    console.log(todo,id,'all products');
+    dispatch(updateTodoStart());
+try{
+  const {data} = await axios.put(`${apiDomain}/todo/${id}`,todo
+  );
+  console.log(data);
+// const val = await getAuction();
+// console.log(val,'my val');
+  dispatch(updateTodoSuccess({todo,id}));
+// console.log(data.auction);
+
+}catch(err){
+console.log(err);
+dispatch(updateTodoFailure());
+}
   }

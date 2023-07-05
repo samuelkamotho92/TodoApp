@@ -47,6 +47,20 @@ const todoSlice = createSlice({
       state.isFetching = false;
       state.error = false;
     },
+    updateTodoStart: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    updateTodoSuccess: (state, action) => {
+      state.isFetching = false;
+      state.todos[
+        state.todos.findIndex((todoVal) => todoVal.id === action.payload.id)
+      ] = action.payload.todo;
+    },
+    updateTodoFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
   },
 });
 export const {
@@ -59,5 +73,8 @@ export const {
   createTodoStart,
   createTodoSuccess,
   createTodoFailure,
+  updateTodoFailure,
+  updateTodoSuccess,
+  updateTodoStart
 } = todoSlice.actions;
 export default todoSlice.reducer;
