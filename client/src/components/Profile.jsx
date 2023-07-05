@@ -1,10 +1,10 @@
 import './profile.css'
 import userAvator from '../assets/userAvator.webp'
-import { useContext } from 'react'
-import { Context } from '../context/userContext/Context'
+import { useSelector } from "react-redux";
 export default function Profile() {
-
-    const { user } = useContext(Context);
+    console.log(useSelector((state)=>state.user.user));
+    const {email,username,id} = useSelector((state)=>state.user.user)
+console.log(email,username,id)
     return (
         <div className='profile'>
             <div className="userAvator">
@@ -12,11 +12,11 @@ export default function Profile() {
             </div>
             <div className="user-Details">
                 <h2>Username</h2>
-                <p>{user.username}</p>
+                <p>{username}</p>
                 <h2>Email</h2>
-                <p>{user.email}</p>
+                <p>{email}</p>
                 <h2>User-Id</h2>
-                <p>{user.id}</p>
+                <p>{id}</p>
             </div>
         </div>
     )

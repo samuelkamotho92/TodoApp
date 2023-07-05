@@ -7,19 +7,20 @@ import Todos from './pages/Todos';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './app.css'
-
+import { useSelector } from 'react-redux';
 import { Context } from './context/userContext/Context';
 
 function App() {
-  const { user } = useContext(Context);
-
+  // const { user } = useContext(Context);
+  const  user = useSelector((state)=>state.user.user?.username);
+  console.log(user)
   return (
     <div className='app'>
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path="/todos" element={user ? <Todos /> : <Home />} />
+          <Route exact path='/' element={<Home />} />
+          <Route path="/todos" element={user?<Todos />:<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

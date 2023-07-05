@@ -4,22 +4,35 @@ import './header.css'
 import { useContext } from 'react'
 import { Context } from "../context/userContext/Context";
 import { useNavigate } from "react-router-dom";
+import { logOutuser } from "../redux/apiCall";
+import { useSelector,useDispatch } from 'react-redux';
 function Header() {
-    const { user, dispatch } = useContext(Context);
+    const dispatch = useDispatch();
+    console.log(useSelector((state)=>state.user.user));
+    const username = useSelector((state)=>state.user?.user?.username)
+  
     const navigate = useNavigate();
+// const usernam = true;
+// const email = 'samleader'
     const handleLogout = () => {
-        dispatch({ type: "LOGOUT" });
-        navigate("/");
+        console.log('logging out');
+        logOutuser(dispatch);
+        // navigate("/");
     };
     return (
         <div className="header" >
             <div className="header-Wrapper" style={{}}>
                 <Link to='/' style={{ color: "brown" }}><FaHome id="icons" />Home</Link>
-                <Link to='/register' style={{ color: "purple" }}><FaInfoCircle id="icons" /> Register</Link>
-                {user && (
+                {username ? (
                     <>
                         <Link to='/todos' style={{ color: "green" }}><FaBook id="icons" /> Todos</Link>
                         <Link onClick={handleLogout} style={{ color: "red" }}><FaSignOutAlt id="icons" /> Logout</Link>
+                        <p>email</p>
+                    </>
+                ):(
+                    <>
+                    <Link to='/' style={{ color: "purple" }}><FaInfoCircle id="icons" /> Login</Link>
+                    <Link to='/register' style={{ color: "purple" }}><FaInfoCircle id="icons" /> Register</Link>
                     </>
                 )
 

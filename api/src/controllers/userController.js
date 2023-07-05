@@ -16,19 +16,6 @@ export const register = async (req, res) => {
     console.log(req.body);
     const { username, password, email } = req.body;
     let hashPassword = bcrypt.hashSync(password, 10);
-    // try {
-    //     let pool = await sql.connect(config.sql);
-    //     await pool.request()
-    //         .input("username", sql.VarChar, username)
-    //         .input("hashedpassword", sql.VarChar, hashPassword)
-    //         .input("email", sql.VarChar, email)
-    //         .query("insert into users(username,hashedpassword, email ) values (@username,@hashedpassword,@email)");
-    //     res.status(201).json({ message: 'User created successfully' });
-    // } catch (error) {
-    //     res.status(500).json({ error: 'An error occurred while creating the user' });
-    // } finally {
-    //     sql.close();
-    // }
     try {
         let pool = await sql.connect(config.sql);
         const userResult = await pool.request()

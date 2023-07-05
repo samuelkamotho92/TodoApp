@@ -33,6 +33,7 @@ export const getTodo = async (req, res) => {
 
 // // Create a new todo
 export const createTodo = async (req, res) => {
+    console.log(req.body);
     try {
         const { description } = req.body;
         let pool = await sql.connect(config.sql);
@@ -41,6 +42,7 @@ export const createTodo = async (req, res) => {
             .query("insert into todoData (description) values (@description)"); // Execute the SQL query
         res.status(201).json({ message: 'Todo created successfully' });
     } catch (error) {
+        console.log(error);
         res.status(500).json({ error: 'An error occurred while creating the todo' });
     } finally {
         sql.close();   // Close the SQL connection

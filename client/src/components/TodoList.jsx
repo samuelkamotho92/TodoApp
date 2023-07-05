@@ -5,37 +5,37 @@ import { Context } from '../context/userContext/Context'
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 import './todolist.css'
 import UpdateForm from './UpdateForm'
+import { getTodosData } from '../redux/apiCall'
+import {useDispatch,useSelector} from 'react-redux'
+import { deleteTodo } from '../redux/apiCall'
 function TodoList() {
     const [showEditForm, setShowEditForm] = useState(false)
-    const [todos, setTodos] = useState([])
     const [tempTodo, setTempTodo] = useState('')
-    const { user } = useContext(Context)
-    const getTodos = async () => {
-        const res = await axios.get(`${apiDomain}/todos`,
-            { headers: { "Authorization": `${user.token}` } }
-        )
-        setTodos(res.data)
-    }
+    const disaptch = useDispatch();
+    const todos = useSelector((state)=>state.todos.todos)
+    console.log(todos);
 
     useEffect(() => {
-        getTodos()
+        getTodosData(disaptch);
     }, [])
 
     const handleDelete = async (id) => {
-        await axios.delete(`${apiDomain}/todo/${id}`,
-            { headers: { "Authorization": `${user.token}` } }
-        ).then((res) => {
-            alert(res.data.message)
-        }).catch(({ response }) => {
-            alert(response.response.data.error)
-        })
-        getTodos();
+        console.log('delete data');
+        deleteTodo(id,disaptch)
+    //     await axios.delete(`${apiDomain}/todo/${id}`,
+    //         { headers: { "Authorization": `${user.token}` } }
+    //     ).then((res) => {
+    //         alert(res.data.message)
+    //     }).catch(({ response }) => {
+    //         alert(response.response.data.error)
+    //     })
+    //     getTodos();
     }
 
-    const handleToggle = (data) => {
-        setTempTodo(data)
-        setShowEditForm(!showEditForm)
-    }
+    // const handleToggle = (data) => {
+    //     setTempTodo(data)
+    //     setShowEditForm(!showEditForm)
+    // }
 
 
 
@@ -56,6 +56,7 @@ function TodoList() {
                 )
             })
             }
+            <p>Check todos</p>
         </div>
     )
 }
